@@ -1,5 +1,6 @@
 """Setup for the Pre-Kirshor"""
 from setuptools import setup, find_packages
+from Cython.Build import cythonize
 
 with open(
   "README.md",
