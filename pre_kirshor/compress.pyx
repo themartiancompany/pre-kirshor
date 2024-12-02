@@ -56,6 +56,7 @@ def _compress(
   cdef list _text_words
   cdef set _text_words_set
   cdef int _text_words_length
+  cdef list _text_index
   cdef list _encoded
   cdef str _encoded_text
   if ( _dictionary_path == "" ):
@@ -84,7 +85,6 @@ def _compress(
     'w').write(
       _text_words)
   del _text_words_set
-  cdef int _text_index[_text_words_length]
   _text_index = _index_get(
     _dictionary_path,
     _text_words,
