@@ -2,7 +2,7 @@ def _index_get(
   str _dictionary_path,
   list _text_words,
   int _text_words_length):
-  cdef int _index[_text_words_length]
+  cdef list _index
   cdef list _dictionary
   cdef int _dictionary_length
   cdef int _word = 0
@@ -29,7 +29,7 @@ def _index_get(
     if ( _word_length > 3 ):
       _found = False
       for _term in range(
-        _index_length):
+        _text_words_length):
         if ( _text_words[_word] == _dictionary[_term] ):
           _index.append(
             _term)
@@ -53,8 +53,10 @@ def _compress(
   cdef _term = 0
   cdef list _text
   cdef int _text_length
+  cdef list _text_words
   cdef set _text_words_set
   cdef int _text_words_length
+  cdef list _encoded
   cdef str _encoded_text
   if ( _dictionary_path == "" ):
     _dictionary_path = '/usr/share/dict/words'
@@ -67,14 +69,12 @@ def _compress(
     _text)
   print(
     f"INFO: text is long {_text_length} words")
-  cdef char *_encoded[_text_length]
   _text_words_set = set(
     _text)
   _text_words_length = len(
     _text_words_set)
   print(
     f"INFO: words contains {_text_words_length} distinct words")
-  cdef char *_text_words[_text_words_length]
   _text_words = list(
     _text_words_set)
   print(
@@ -112,5 +112,5 @@ def _compress(
   open(
     _output_path,
     'w').write(
-      _encoded_string)
+      _encoded_text)
 
