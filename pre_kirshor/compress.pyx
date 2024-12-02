@@ -1,5 +1,5 @@
 def _index_get(
-  str _dictionary_path
+  str _dictionary_path,
   list _text_words,
   int _text_words_length):
   cdef int _index[_text_words_length]
