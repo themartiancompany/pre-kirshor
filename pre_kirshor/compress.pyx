@@ -20,10 +20,10 @@ def _index_get(
   print(
     f"INFO: dictionary size: {_dictionary_length}")
   for _word in range(
+    _text_words_length):
     if ( _word % 1000 == 0 ):
       print(
         f"INFO: indexing word {_word}")
-    _text_words_length):
     _word_length = len(
       _text_words[_word])
     if ( _word_length > 3 ):
