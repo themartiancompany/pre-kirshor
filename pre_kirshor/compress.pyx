@@ -46,6 +46,7 @@ def _index_get(
 def _compress(
   str _input_path,
   str _output_path,
+  str _text_words_path,
   str _text_index_path,
   str _dictionary_path):
   cdef _word = 0
@@ -76,6 +77,12 @@ def _compress(
   cdef char *_text_words[_text_words_length]
   _text_words = list(
     _text_words_set)
+  print(
+    f"saving words set to '{_text_words_path}'")
+  open(
+    _text_words_path,
+    'w').write(
+      _text_words)
   del _text_words_set
   cdef int _text_index[_text_words_length]
   _text_index = _index_get(
@@ -83,7 +90,7 @@ def _compress(
     _text_words,
     _text_words_length)
   print(
-    f"saving index to '{_text_index_path}'")
+    f"saving numerical index to '{_text_index_path}'")
   open(
     _text_index_path,
     'w').write(
