@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from .pre_kirshor import _compress
+from .compress import _compress
 import sys
 
 def _main():
