@@ -2,7 +2,7 @@ def _index_get(
   str _dictionary_path,
   list _text_words,
   int _text_words_length):
-  cdef list _index
+  cdef list _index = [];
   cdef list _dictionary
   cdef int _dictionary_length
   cdef int _word = 0
@@ -57,7 +57,7 @@ def _compress(
   cdef set _text_words_set
   cdef int _text_words_length
   cdef list _text_index
-  cdef list _encoded
+  cdef list _encoded = []
   cdef str _encoded_text
   if ( _dictionary_path == "" ):
     _dictionary_path = '/usr/share/dict/words'
