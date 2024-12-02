@@ -32,7 +32,7 @@ _setup_kwargs={
     "Operating System :: Unix",
   ],
   'ext_modules': cythonize(
-                   'pre-kirshor.pyx'),
+                   'pre_kirshor/pre-kirshor.pyx'),
 }
 
 setup(
