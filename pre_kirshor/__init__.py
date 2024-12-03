@@ -105,7 +105,8 @@ def _main():
         *_args,
         **_kwargs)
   _args = _parser.parse_args()
-  _config_show()
+  _config_show(
+    _args)
   if ( _args.target_command == "encode" ):
     _encode_args = (
       _args.input_path,
