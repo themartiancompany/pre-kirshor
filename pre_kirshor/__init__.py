@@ -7,7 +7,7 @@ from os.path import realpath
 from site import getsitepackages
 from .encode import _encode
 
-_msg_info(
+def _msg_info(
   _msg):
   print(
     f"INFO: {_msg}")
