@@ -153,7 +153,7 @@ def _encode(
     _text_index_path)
   _extra_words_save(
     _extra_words,
-    _extra_words,path)
+    _extra_words_path)
   for _word in range(_text_length):
     _translated = False
     if ( _word % 1000 == 0 ):
