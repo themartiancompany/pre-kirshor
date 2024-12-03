@@ -37,6 +37,7 @@ def _text_index_save(
   str _text_index_path):
   _save_list_as_text(
     _text_index,
+    "int",
     " ",
     _text_index_path,
     f"saving numerical index to '{_text_index_path}'")
@@ -46,6 +47,7 @@ def _text_words_save(
   str _text_words_path):
   _save_list_as_text(
     _text_words,
+    "str",
     " ",
     _text_words_path,
     f"saving words set to '{_text_words_path}'")
@@ -55,6 +57,7 @@ def _extra_words_save(
   str _extra_words_path):
   _save_list_as_text(
     _extra_words,
+    "str",
     " ",
     _extra_words_path,
     f"saving not indexed words to '{_extra_words_path}'")
@@ -64,6 +67,7 @@ def _encoded_text_save(
   str _encoded_text_path):
   _save_list_as_text(
     _encoded_text,
+    "str",
     " ",
     _encoded_text_path,
     f"saving encoded text to '{_encoded_text_path}'")
