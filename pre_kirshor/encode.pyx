@@ -160,7 +160,7 @@ def _encode(
     _text_words_set)
   print(
     f"INFO: text contains {_text_words_length} distinct words")
-  _text_words = list(
+  _text_words = sorted(
     _text_words_set)
   print(len(_text_words))
   del _text_words_set
