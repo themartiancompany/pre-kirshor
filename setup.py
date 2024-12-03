@@ -10,15 +10,24 @@ with open(
 _name = "pre-kirshor"
 _version = "0.0.0.0.0.0.0.0.0.0.0.1"
 _setup_kwargs={
-  'name': f"{_name}",
-  'version': f"{_version}",
-  'author': "Pellegrino Prevete",
-  'author_email': "pellegrinoprevete@gmail.com",
-  'description': "Pre-process text for further compression.",
-  'long_description': long_description,
-  'long_description_content_type': "text/markdown",
-  'url': f"https://github.com/themartiancompany/{_name}",
-  'packages': find_packages(),
+  'name':
+    f"{_name}",
+  'version':
+    f"{_version}",
+  'author':
+    "Pellegrino Prevete",
+  'author_email':
+    "pellegrinoprevete@gmail.com",
+  'description':
+    "Pre-process text for further compression.",
+  'long_description':
+    long_description,
+  'long_description_content_type':
+    "text/markdown",
+  'url':
+    f"https://github.com/themartiancompany/{_name}",
+  'packages':
+    find_packages(),
   'entry_points': {
     'console_scripts': [
       'pre-kirshor = pre_kirshor:_main']
@@ -31,8 +40,9 @@ _setup_kwargs={
     "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
     "Operating System :: Unix",
   ],
-  'ext_modules': cythonize(
-                   'pre_kirshor/compress.pyx'),
+  'ext_modules':
+    cythonize(
+      'pre_kirshor/encode.pyx'),
 }
 
 setup(
