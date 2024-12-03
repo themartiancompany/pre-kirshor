@@ -1,10 +1,16 @@
 #!/usr/bin/env python
 
 from argparse import ArgumentParser as _argument_parser
+from os import getcwd
 from os.path import join as path_join
 from os.path import realpath
 from site import getsitepackages
-from .compress import _compress
+from .encode import _encode
+
+_msg_info(
+  _msg):
+  print(
+    f"INFO: {_msg}")
 
 def _dictionary_path_get():
   _site_packages = getsitepackages()[0]
@@ -16,38 +22,76 @@ def _dictionary_path_get():
       '..',
       'share'))
 
+def _extra_words_path_get():
+  return _path_join(
+    getcwd(),
+    "extra-words.txt")
+
+def _text_index_path_get():
+  return _path_join(
+    getcwd(),
+    "text-index.txt")
+
+def _output_path_get():
+  return _path_join(
+    getcwd(),
+    "text-processed.txt")
+
+def _config_show(
+  _args):
+  if _args.verbose:
+    _msg_info(
+      f"  target command: {args.target_command}")
+    _msg_info(
+      f"      input path: {args.input_path}")
+    _msg_info(
+      f"     output path: {args.output_path}")
+    _msg_info(
+      f" text words file: {args.text_words_path}")
+    _msg_info(
+      f"extra words file: {args.extra_words_path}")
+    _msg_info(
+      f" text index file: {args.text_index_path}")
+    _msg_info(
+      f" dictionary path: {args.dictionary_path}")
+
 def _main():
   _parser = _argument_parser()
   _arguments = [
+    [("target_command", ),
+     {"type": str,
+      "help": "It can be 'encode' or 'decode'."}],
     [("input_file", ),
      {"type": str,
-      "help": 'text file to pre-process.'}],
-    [("--key", ),
+      "help": 'Text file to process.'}],
+    [("--text-words-path", ),
      {'action': "store",
       "type": str,
-      "default": _key_path_get(),
-      "help": ('absolute path of api key '
-               'of an etherscan/blockscout-like service.')}],
-    [("--network", ),
+      "default": '',
+      "help": ('Path for the set of the words '
+               'in the text (optional).')}],
+    [("--extra-words-path", ),
      {'action': "store",
       "type": str,
-      "default": 'main',
-      "help": ('network to connect to '
-               '(eth, bsc, avax, polygon, '
-               'optimism, base, arbitrum, '
-               'fantom, taiko, snowscan, '
-               'gnosis, kcc, ethw, etc, '
-               'doge, polygonzk, one)')}],
+      "default": _extra_words_path_get(),
+      "help": ('Path for the words not present '
+               'in the given dictionary.')}],
+    [("--text-index-path", ),
+     {'action': "store",
+      "type": str,
+      "default": _text_index_path_get(),
+      "help": ('Path for dictionary translation'
+               'index for the given text.')}],
     [("--dictionary-path", ),
      {'action': "store",
       "type": str,
       "default": _dictionary_path_get(),
-      "help": ('path of the words dictionary '
+      "help": ('Path of the words dictionary '
                "to use to process the text.")}],
-    [("--output-file", ),
+    [("--output-path", ),
      {'action': "store",
       "type": str,
-      "default": 'processed.txt',
+      "default": _output_path_get(),
       "help": 'path of resulting processed file.'}],
     [("--verbose", ),
      {'dest': "verbose",
@@ -61,32 +105,18 @@ def _main():
         *_args,
         **_kwargs)
   _args = _parser.parse_args()
-  _abi_get_args = (
-    _args.contract_address,
-    _args.network,
-    _args.blockchain,
-  _input_path = sys.argv[1]
-  _output_path = sys.argv[2]
-  _text_words_path = sys.argv[3]
-  _text_index_path = sys.argv[4]
-  _dictionary_path = sys.argv[5]
-  print(
-    f"input file: {_input_path}")
-  print(
-    f"output file: {_output_path}")
-  print(
-    f"text words file: {_text_words_path}")
-  print(
-    f"text index file: {_text_index_path}")
-  print(
-    f"dictionary file: {_dictionary_path}")
-  _compress(
-    _input_path,
-    _output_path,
-    _text_words_path,
-    _text_index_path,
-    _dictionary_path
-    ) 
+  _config_show()
+  if ( _args.target_command == "encode" ):
+    _encode_args = (
+      _args.input_path,
+      _args.output_path,
+      _args.text_words_path,
+      _args.extra_words_path,
+      _args.text_index_path,
+      _args.dictionary_path
+      )
+    _encode(
+      *encode_args)
 
 if ( __name__ == "__main__" ):
   _main()
