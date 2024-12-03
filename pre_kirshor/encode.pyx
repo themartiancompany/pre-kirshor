@@ -4,25 +4,33 @@ def _read_text_as_list(
   return open(
     _path,
     'r').read(
-      ).split(
+      ).decode(
+        'utf8').split(
         _separator)
 
 def _save_list_as_text(
   list _list,
+  str _list_type,
   str _separator,
   str _path,
   str _msg):
   cdef str _string
   print(
     f"INFO: {_msg}")
-  _string = _separator.join(
-    map(
-      str,
-      _list))
-  open(
+  if ( _list_type == "int" )
+    _string = _separator.join(
+      map(
+        str,
+        _list))
+  elif ( _list_type == "str" )
+    _string = _separator.join(
+      _list)
+  f = open(
     _path,
     'w').write(
-      _string)
+      _string.encode(
+        'utf8'))
+  f.close()
 
 def _text_index_save(
   list _text_index,
@@ -141,6 +149,8 @@ def _encode(
     f"INFO: text is long {_text_length} words")
   _text_words_set = set(
     _text)
+  _text_words_set.remove(
+    '')
   _text_words_length = len(
     _text_words_set)
   print(
