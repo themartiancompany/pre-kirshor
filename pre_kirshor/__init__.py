@@ -41,19 +41,19 @@ def _config_show(
   _args):
   if _args.verbose:
     _msg_info(
-      f"  target command: {args.target_command}")
+      f"  target command: {_args.target_command}")
     _msg_info(
-      f"      input path: {args.input_path}")
+      f"      input path: {_args.input_path}")
     _msg_info(
-      f"     output path: {args.output_path}")
+      f"     output path: {_args.output_path}")
     _msg_info(
-      f" text words file: {args.text_words_path}")
+      f" text words file: {_args.text_words_path}")
     _msg_info(
-      f"extra words file: {args.extra_words_path}")
+      f"extra words file: {_args.extra_words_path}")
     _msg_info(
-      f" text index file: {args.text_index_path}")
+      f" text index file: {_args.text_index_path}")
     _msg_info(
-      f" dictionary path: {args.dictionary_path}")
+      f" dictionary path: {_args.dictionary_path}")
 
 def _main():
   _parser = _argument_parser()
