@@ -8,7 +8,7 @@ def _read_text_as_list(
         _separator)
 
 def _save_list_as_text(
-  list _list,
+  _list,
   str _separator,
   str _path,
   str _msg):
@@ -23,7 +23,7 @@ def _save_list_as_text(
       _string)
 
 def _text_index_save(
-  list _text_index,
+  _text_index,
   str _text_index_path):
   _save_list_as_text(
     _text_index,
@@ -32,7 +32,7 @@ def _text_index_save(
     f"saving numerical index to '{_text_index_path}'")
 
 def _text_words_save(
-  list _text_words,
+  _text_words,
   str _text_words_path):
   _save_list_as_text(
     _text_words,
@@ -41,7 +41,7 @@ def _text_words_save(
     f"saving words set to '{_text_words_path}'")
 
 def _extra_words_save(
-  list _extra_words,
+  _extra_words,
   str _extra_words_path):
   _save_list_as_text(
     _extra_words,
@@ -50,7 +50,7 @@ def _extra_words_save(
     f"saving not indexed words to '{_extra_words_path}'")
 
 def _encoded_text_save(
-  list _encoded_text,
+  _encoded_text,
   str _encoded_text_path):
   _save_list_as_text(
     _encoded_text,
@@ -60,7 +60,7 @@ def _encoded_text_save(
 
 def _index_build(
   str _dictionary_path,
-  list _text_words,
+  _text_words,
   int _text_words_length):
   cdef list _index = []
   cdef list _extra_words = []
