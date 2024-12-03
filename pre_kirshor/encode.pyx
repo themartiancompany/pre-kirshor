@@ -28,8 +28,9 @@ def _save_list_as_text(
   f = open(
     _path,
     'w',
-    encoding='utf8').write(
-      _string)
+    encoding='utf8')
+  f.write(
+    _string)
   f.close()
 
 def _text_index_save(
