@@ -111,11 +111,11 @@ def _main():
     _encode_args = (
       _args.input_path,
       _args.output_path,
+      _args.text_index_path,
       _args.text_words_path,
       _args.extra_words_path,
-      _args.text_index_path,
       _args.dictionary_path
-      )
+    )
     _encode(
       *_encode_args)
 
