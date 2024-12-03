@@ -61,7 +61,7 @@ def _main():
     [("target_command", ),
      {"type": str,
       "help": "It can be 'encode' or 'decode'."}],
-    [("input_file", ),
+    [("input_path", ),
      {"type": str,
       "help": 'Text file to process.'}],
     [("--text-words-path", ),
