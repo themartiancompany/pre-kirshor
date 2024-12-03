@@ -117,7 +117,7 @@ def _main():
       _args.dictionary_path
       )
     _encode(
-      *encode_args)
+      *_encode_args)
 
 if ( __name__ == "__main__" ):
   _main()
