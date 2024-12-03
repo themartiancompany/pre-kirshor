@@ -3,9 +3,9 @@ def _read_text_as_list(
   str _separator):
   return open(
     _path,
-    'r').read(
-      ).decode(
-        'utf8').split(
+    'r',
+    encoding='utf8').read(
+      ).split(
         _separator)
 
 def _save_list_as_text(
@@ -27,9 +27,9 @@ def _save_list_as_text(
       _list)
   f = open(
     _path,
-    'w').write(
-      _string.encode(
-        'utf8'))
+    'w',
+    encoding='utf8').write(
+      _string)
   f.close()
 
 def _text_index_save(
