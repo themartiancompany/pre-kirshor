@@ -2,7 +2,7 @@
 
 from argparse import ArgumentParser as _argument_parser
 from os import getcwd
-from os.path import join as path_join
+from os.path import join as _path_join
 from os.path import realpath
 from site import getsitepackages
 from .encode import _encode
@@ -15,7 +15,7 @@ def _msg_info(
 def _dictionary_path_get():
   _site_packages = getsitepackages()[0]
   _share = realpath(
-    path_join(
+    _path_join(
       _site_packages,
       '..',
       '..',
