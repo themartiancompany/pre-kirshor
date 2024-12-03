@@ -84,6 +84,7 @@ def _index_build(
   cdef int _word = 0
   cdef int _word_length
   cdef int _term = 0
+  cdef int _word_found = 0
   cdef int _word_new = -1
   cdef bint _found
   _dictionary = _read_text_as_list(
@@ -108,6 +109,7 @@ def _index_build(
           _index.append(
             _term)
           _found = True
+          _word_found = _word_found + 1
           break
       if ( _found == False ):
         _index.append(
@@ -121,6 +123,11 @@ def _index_build(
       _word_new = _word_new - 1
       _extra_words.append(
         _text_words[_word])
+  print(
+    "INFO: found {_word_found} words in dictionary.")
+  print(
+    "INFO: not found {_word_new} words in dictionary.")
+
   return _index, _extra_words
 
 def _encode(
