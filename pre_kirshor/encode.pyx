@@ -31,6 +31,15 @@ def _text_index_save(
     _text_index_path,
     f"saving numerical index to '{_text_index_path}'")
 
+def _text_words_save(
+  list _text_words,
+  str _text_words_path):
+  _save_list_as_text(
+    _text_words,
+    " ",
+    _text_words_path,
+    f"saving words set to '{_text_words_path}'")
+
 def _extra_words_save(
   list _extra_words,
   str _extra_words_path):
@@ -138,12 +147,9 @@ def _encode(
     _text_words_set)
   del _text_words_set
   if ( _text_words_path != "" ):
-    print(
-      f"saving words set to '{_text_words_path}'")
-    open(
-      _text_words_path,
-      'w').write(
-        _text_words)
+    _text_words_save(
+      _text_words,
+      _text_words_path)
   _text_index, _extra_words = _index_build(
     _dictionary_path,
     _text_words,
