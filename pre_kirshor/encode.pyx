@@ -111,7 +111,7 @@ def _index_build(
           break
       if ( _found == False ):
         _index.append(
-            _word)
+            _word_new)
         _word_new = _word_new - 1
         _extra_words.append(
           _text_words[_word])
