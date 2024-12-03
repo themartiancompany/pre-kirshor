@@ -2,13 +2,14 @@ def _index_get(
   str _dictionary_path,
   list _text_words,
   int _text_words_length):
-  cdef list _index = [];
+  cdef list _index = []
+  cdef list _extra_words = []
   cdef list _dictionary
   cdef int _dictionary_length
   cdef int _word = 0
   cdef int _word_length
   cdef int _term = 0
-  cdef int _none = -1
+  cdef int _word_new = -1
   cdef bint _found
   _dictionary = open(
     _dictionary_path,
@@ -37,11 +38,17 @@ def _index_get(
           break
       if ( _found == False ):
         _index.append(
-            _none)
+            _word_new)
+        _word_new = _word_new - 1
+        _extra_words.append(
+          _text_words[_word])
     else:
       _index.append(
-        _none)
-  return _index
+        _word_new)
+      _word_new = _word_new - 1
+      _extra_words.append(
+        _text_words[_word])
+  return _index, _extra_words
 
 def _compress(
   str _input_path,
@@ -57,6 +64,7 @@ def _compress(
   cdef set _text_words_set
   cdef int _text_words_length
   cdef list _text_index
+  cdef list _extra_words
   cdef list _encoded = []
   cdef str _encoded_text
   if ( _dictionary_path == "" ):
@@ -85,7 +93,7 @@ def _compress(
     'w').write(
       _text_words)
   del _text_words_set
-  _text_index = _index_get(
+  _text_index, _extra_words = _index_get(
     _dictionary_path,
     _text_words,
     _text_words_length)
@@ -95,6 +103,12 @@ def _compress(
     _text_index_path,
     'w').write(
       _text_index)
+  print(
+    f"saving not indexed words to '{_extra_words_path}'")
+  open(
+    _extra_words_path,
+    'w').write(
+      _extra_words)
   for _word in range(_text_length):
     _translated = False
     if ( _word % 1000 == 0 ):
