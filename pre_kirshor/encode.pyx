@@ -111,13 +111,13 @@ def _index_build(
           break
       if ( _found == False ):
         _index.append(
-            _word_new)
+            _word)
         _word_new = _word_new - 1
         _extra_words.append(
           _text_words[_word])
     else:
       _index.append(
-        _word_new)
+        _word)
       _word_new = _word_new - 1
       _extra_words.append(
         _text_words[_word])
@@ -126,8 +126,8 @@ def _index_build(
 def _encode(
   str _text_path,
   str _encoded_text_path,
-  str _text_words_path,
   str _text_index_path,
+  str _text_words_path,
   str _extra_words_path,
   str _dictionary_path):
   cdef _word = 0
@@ -162,7 +162,6 @@ def _encode(
     f"INFO: text contains {_text_words_length} distinct words")
   _text_words = sorted(
     _text_words_set)
-  print(len(_text_words))
   del _text_words_set
   if ( _text_words_path != "" ):
     _text_words_save(
