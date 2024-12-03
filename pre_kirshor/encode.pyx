@@ -17,12 +17,12 @@ def _save_list_as_text(
   cdef str _string
   print(
     f"INFO: {_msg}")
-  if ( _list_type == "int" )
+  if ( _list_type == "int" ):
     _string = _separator.join(
       map(
         str,
         _list))
-  elif ( _list_type == "str" )
+  elif ( _list_type == "str" ):
     _string = _separator.join(
       _list)
   f = open(
