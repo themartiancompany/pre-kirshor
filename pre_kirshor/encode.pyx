@@ -124,10 +124,9 @@ def _index_build(
       _extra_words.append(
         _text_words[_word])
   print(
-    "INFO: found {_word_found} words in dictionary.")
+    f"INFO: found {_word_found} words in dictionary.")
   print(
-    "INFO: not found {_word_new} words in dictionary.")
-
+    f"INFO: not found {_word_new} words in dictionary.")
   return _index, _extra_words
 
 def _encode(
